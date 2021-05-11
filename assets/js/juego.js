@@ -64,7 +64,7 @@ const turnoComputadora = (puntosMinimos) => {
         const carta = pedirCarta();
 
         puntosComputadora = puntosComputadora + valorCarta(carta);
-        puntosHTML[1].innerText = puntosComputadora; // [0] porque es la primera etiqueta <spann></spann>
+        puntosHTML[1].innerText = puntosComputadora; //* [1] porque es la segunda etiqueta <spann></spann>
 
         // <img class="carta" src="assets/cartas/10C.png">
         const imgCarta = document.createElement('img');
@@ -90,7 +90,7 @@ const turnoComputadora = (puntosMinimos) => {
             alert('Computadora Gana');
         }
 
-    }, 1000);  // Para ejecutar la funcion 1 segundo despues de que se ejecute el turno de la computadora
+    }, 1000);  //* Para ejecutar los alert 1 segundo despues de que se ejecute el turno de la computadora, evitando que se muestre antes que las cartas.
 
 }
 
@@ -100,7 +100,7 @@ btnPedir.addEventListener('click', () => {
     const carta = pedirCarta();
 
     puntosJugador = puntosJugador + valorCarta(carta);
-    puntosHTML[0].innerText = puntosJugador; // [0] porque es la primera etiqueta <spann></spann>
+    puntosHTML[0].innerText = puntosJugador; //* [0] porque es la primera etiqueta <spann></spann>
 
     // <img class="carta" src="assets/cartas/10C.png">
     const imgCarta = document.createElement('img');
