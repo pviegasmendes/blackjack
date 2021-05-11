@@ -90,7 +90,7 @@ const turnoComputadora = (puntosMinimos) => {
             alert('Computadora Gana');
         }
 
-    }, 50);  // Para ejecutar la funcion 20 milisegundos despues de que se ejecute el turno de la computadora
+    }, 1000);  // Para ejecutar la funcion 1 segundo despues de que se ejecute el turno de la computadora
 
 }
 
