@@ -78,7 +78,7 @@ const enviarInformacion = (info) => {
         .then((respuesta) => {
             Swal.fire({
                 icon: "success",
-                title: `Bienvenido ${nombreUsuario}`,
+                title: `Bienvenido ${respuesta.valor}`,
                 showConfirmButton: false,
             });
             ocultarFormulario();
