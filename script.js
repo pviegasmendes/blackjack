@@ -36,9 +36,6 @@ let pass2;
 let pass3;
 let pass4;
 
-let Minúsculas = [];
-let Mayúsculas = [];
-
 // Localstorage
 let nombreUsuario = localStorage.getItem("nombreUsuario");
 let usuarioUsuario = localStorage.getItem("usuarioUsuario");
@@ -332,11 +329,3 @@ function copiarAlPortapapeles(id_elemento) {
         timer: 1500,
     });
 }
-
-/* Backlog 
-corregir semantica html, y estucturar mediante css
-
-Entregar rpoyecto final
-
-
-*/
