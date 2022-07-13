@@ -1,3 +1,5 @@
+const JSON_POST = "https://jsonplaceholder.typicode.com/posts";
+
 // Referencia a DOM
 let mypass = document.getElementById("mypass");
 let passHistory = document.getElementById("history");
@@ -42,8 +44,6 @@ let nombreUsuario = localStorage.getItem("nombreUsuario");
 let usuarioUsuario = localStorage.getItem("usuarioUsuario");
 let claveUsuario = localStorage.getItem("claveUsuario");
 
-
-
 // Funcion ocultar app
 
 const ocultarApp = () => {
@@ -66,31 +66,40 @@ const ocultarFormulario = () => {
 
 // Funcion Formulario de Ingreso
 
+const enviarInformacion = (info) => {
+    fetch(JSON_POST, {
+        method: "POST",
+        body: JSON.stringify(info),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8",
+        },
+    })
+        .then((res) => res.json())
+        .then((respuesta) => {
+            Swal.fire({
+                icon: "success",
+                title: `Bienvenido ${nombreUsuario}`,
+                showConfirmButton: false,
+            });
+            ocultarFormulario();
+            mostrararApp();
+        });
+};
+
 formulario.addEventListener("submit", (e) => {
     e.preventDefault();
     nombreUsuario = nombre.value;
     usuarioUsuario = usuario.value;
     claveUsuario = clave.value;
 
+    enviarInformacion({ valor: nombre.value });
+
     localStorage.setItem("nombreUsuario", nombre.value);
     localStorage.setItem("usuarioUsuario", usuario.value);
     localStorage.setItem("claveUsuario", clave.value);
 
     contSaludo.style.display = "block";
-
-    ocultarFormulario();
-    mostrararApp();
-
-    Swal.fire({
-        icon: "success",
-        title: `Bienvenido ${nombreUsuario}`,
-        showConfirmButton: false,
-        timer: 1500,
-    });
 });
-
-
-
 
 // Funcion constructora objeto password
 class Password {
@@ -110,11 +119,62 @@ let numerosPass = numeros.concat(numeros2);
 
 // Generar Objetos con tipo de passowd y arrays
 
-
-
 let password1 = new Password("Numérica", numerosPass);
-let letras = new Password("Alfabética", ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]);
-let letrasMayusculas = new Password("Alfabética", ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","U","V","W","X","Y","Z"]);
+let letras = new Password("Alfabética", [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+]);
+let letrasMayusculas = new Password("Alfabética", [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+]);
 const concatLetras = letras.pass.concat(letrasMayusculas.pass);
 let password3 = new Password("Alfabética", concatLetras);
 const concatAlphanumeric = password1.pass.concat(password3.pass);
@@ -140,10 +200,6 @@ const printHistory = () => {
 const printPass = () => {
     mypass.innerHTML = `<h2 id="claveACopiar" class="clave notification is-success title is-5 animate__animated animate__pulse">${pass}</h2>`;
     printHistory();
-
-    console.log(type);
-    console.log(pass);
-    console.log(...historyLog);
 };
 
 // Funcion desordenar array
@@ -158,10 +214,6 @@ function shuffleArray(inputArray) {
     pass4 = inputArray.slice(12, 16);
     pass4 = pass4.join("");
     pass = [].concat(`${pass1}-${pass2}-${pass3}-${pass4}`);
-    console.log(pass1);
-    console.log(pass2);
-    console.log(pass3);
-    console.log(pass4);
     historial.push(pass); // push al array historial
     localStorage.setItem("historyLog", JSON.stringify(historial)); // Guarda historial en localstorage
     historyLog = JSON.parse(localStorage.getItem("historyLog")); // Recupera historial de localstorage
@@ -169,7 +221,6 @@ function shuffleArray(inputArray) {
 
 // Array de obetos con tipos de password
 let passwordArray = [password1, password2, password3];
-console.log(passwordArray);
 
 // Generacion de password en base a selector
 const passwordType = (option) => {
@@ -225,10 +276,6 @@ btnLogout.onclick = () => {
     });
 };
 
-// Console log de password generado con su tipo
-console.log(type);
-console.log(pass);
-
 // Ocultar / mostrar Formulario
 
 const usuarioIngreso = () => {
@@ -259,14 +306,11 @@ clave.addEventListener("input", (e) => {
     sessionStorage.setItem("inputClave", e.target.value);
 });
 
-
-
 const imprimirHistorialAnterior = () => {
     for (let i = 0; i < historyLog.length - 1; i++) {
         mypass.innerHTML = `<h2 class="clave notification is-success title is-5 animate__animated animate__pulse">${historyLog[0]}</h2>`;
         let div = document.createElement("div");
         div.innerHTML = `<p class="notification is-warning animate__animated animate__fadeInDown">${historyLog[i]}</p>`;
-        console.log(historyLog[i]);
         passHistory.prepend(div);
     }
 };
@@ -296,4 +340,3 @@ Entregar rpoyecto final
 
 
 */
-
