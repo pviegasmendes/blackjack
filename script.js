@@ -113,8 +113,8 @@ let numerosPass = numeros.concat(numeros2);
 
 
 let password1 = new Password("Numérica", numerosPass);
-let letras = new Password("Alfabética", Minúsculas);
-let letrasMayusculas = new Password("Alfabética", Mayúsculas);
+let letras = new Password("Alfabética", ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]);
+let letrasMayusculas = new Password("Alfabética", ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","U","V","W","X","Y","Z"]);
 const concatLetras = letras.pass.concat(letrasMayusculas.pass);
 let password3 = new Password("Alfabética", concatLetras);
 const concatAlphanumeric = password1.pass.concat(password3.pass);
