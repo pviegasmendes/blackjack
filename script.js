@@ -58,7 +58,8 @@ const mostrararApp = () => {
 const ocultarFormulario = () => {
     contFormulario.style.display = "none";
     contSaludo.innerHTML = `
-    <h2>Hola ${nombreUsuario}</h2>`;
+    <h2>${nombreUsuario}</h2>
+`;
 };
 
 // Funcion Formulario de Ingreso
