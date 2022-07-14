@@ -6,8 +6,6 @@ Alumno: Viegas Mendes
 
 Comisión: 37815
 
-
-![screenshot](/captura.PNG)
 ```sh
 https://pviegasmendes.github.io/password-generator/
 ```
