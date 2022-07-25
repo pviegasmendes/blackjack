@@ -15,6 +15,26 @@
     const divCartasJugador = document.querySelector('#jugador-cartas')
     const divCartasComputadora = document.querySelector('#computadora-cartas')
     const puntosHTML = document.querySelectorAll('small');
+    const playerName = document.getElementById('playerName');
+    const formulario = document.getElementById("formulario");
+
+
+
+
+    document.getElementById('container').style.display = 'none';
+
+
+    // Funcion nombre de jugador
+    let nombreIngresado = '';
+formulario.addEventListener('submit', (e) => {
+    e.preventDefault();
+    nombreIngresado = nombre.value;
+    playerName.innerText = nombreIngresado;
+    formulario.style.display = 'none';
+    container.style.display = 'block';
+} )
+
+
 
     // Esta funcion crea una nueva baraja
 
@@ -83,18 +103,20 @@
         setTimeout(() => {
 
             if (puntosComputadora === puntosMinimos) {
-                alert('Es un empate!');
+                aSwal.fire('Es un empate!');
             } else if (puntosMinimos > 21) {
-                alert('Computadora Gana');
+                Swal.fire('Computadora Gana');
             } else if (puntosComputadora > 21) {
-                alert('Jugador Gana');
+                Swal.fire(`${nombreIngresado} es el ganador!!!`);
             } else {
-                alert('Computadora Gana');
+                Swal.fire('Computadora Gana');
             }
 
         }, 1000);  //* Para ejecutar los alert 1 segundo despues de que se ejecute el turno de la computadora, evitando que se muestre antes que las cartas.
 
     }
+
+
 
     // Eventos
 
@@ -148,6 +170,7 @@
 
         divCartasComputadora.innerHTML = '';
         divCartasJugador.innerHTML = '';
+        pedirNombreJugador();
     });
 
 })();
