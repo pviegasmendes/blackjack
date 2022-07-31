@@ -103,7 +103,7 @@ formulario.addEventListener('submit', (e) => {
         setTimeout(() => {
 
             if (puntosComputadora === puntosMinimos) {
-                aSwal.fire('Es un empate!');
+                Swal.fire('Es un empate!');
             } else if (puntosMinimos > 21) {
                 Swal.fire('Computadora Gana');
             } else if (puntosComputadora > 21) {
