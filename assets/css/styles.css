@@ -1,31 +1,165 @@
+:root {
+    --felt: #0f5132;
+    --felt-dark: #082d1c;
+    --gold: #d4af37;
+    --gold-light: #f1d97a;
+    --ink: #f5f1e6;
+}
+
+* { box-sizing: border-box; }
+
 html, body {
-    margin: 0px;
-    background-color: #2f4f30;
-    color: white;
+    margin: 0;
+    min-height: 100vh;
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    background: radial-gradient(ellipse at center, var(--felt) 0%, var(--felt-dark) 100%) fixed;
 }
 
 .titulo {
     text-align: center;
-    background-color: black;
-    color: white;
-    padding: 20px;  
+    padding: 28px 16px 20px;
+    background: linear-gradient(#000, #111);
+    border-bottom: 2px solid var(--gold);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .5);
 }
 
-.carta {
-    position: relative;
-    width: 150px;
-    left: 100px;
-    margin-left: -75px ;
+.titulo h1 {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    letter-spacing: 3px;
+    color: var(--gold-light);
 }
 
-#computadora-cartas, #jugador-cartas {
-    height: 240px;
+.titulo p {
+    margin: 6px 0 0;
+    font-size: .9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: .7;
 }
 
-span {
+.palo { color: #fff; }
+.palo.rojo { color: #e04848; }
+
+.mesa {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 16px 48px;
+}
+
+/* Login */
+.login {
+    max-width: 380px;
+    margin: 40px auto;
+    padding: 32px;
+    text-align: center;
+    background: rgba(0, 0, 0, .35);
+    border: 1px solid rgba(212, 175, 55, .5);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .4);
+}
+
+.login h2 {
+    margin: 0 0 8px;
+    font-family: 'Playfair Display', serif;
+    color: var(--gold-light);
+}
+
+.login label { display: block; margin-bottom: 16px; opacity: .8; font-size: .95rem; }
+
+.login input {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .95);
+    color: #222;
+    font: inherit;
+    text-align: center;
+}
+
+.login input:focus { outline: 2px solid var(--gold); }
+
+/* Zonas de juego */
+.zona {
+    margin-bottom: 24px;
+    padding: 20px 24px;
+    background: rgba(0, 0, 0, .25);
+    border: 1px solid rgba(255, 255, 255, .1);
+    border-radius: 16px;
+}
+
+.zona-titulo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 16px;
+    font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
 }
 
-#playerName{
-    font-size: 2rem;
+.marcador {
+    padding: 4px 14px;
+    border-radius: 999px;
+    background: var(--gold);
+    color: #222;
+    font-family: 'Inter', sans-serif;
+    font-size: .95rem;
+    font-weight: 600;
+}
+
+.marcador small { font-size: 1.1rem; }
+
+.cartas {
+    display: flex;
+    min-height: 200px;
+    padding-left: 40px;
+}
+
+.carta {
+    width: 120px;
+    height: auto;
+    margin-left: -40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .5);
+    animation: repartir .35s ease-out;
+}
+
+@keyframes repartir {
+    from { opacity: 0; transform: translateY(-30px) rotate(-6deg); }
+    to { opacity: 1; transform: none; }
+}
+
+/* Botones */
+.acciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.btn {
+    padding: 12px 28px;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    font: 600 1rem 'Inter', sans-serif;
+    cursor: pointer;
+    transition: transform .15s, box-shadow .15s, opacity .15s;
+}
+
+.btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0, 0, 0, .4); }
+.btn:disabled { opacity: .4; cursor: not-allowed; }
+.btn:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 2px; }
+
+.btn-gold { background: linear-gradient(var(--gold-light), var(--gold)); color: #222; }
+.btn-light { background: var(--ink); color: #222; }
+.btn-ghost { background: transparent; color: var(--ink); border-color: rgba(255, 255, 255, .5); }
+
+@media (max-width: 600px) {
+    .carta { width: 90px; margin-left: -45px; }
+    .cartas { min-height: 150px; padding-left: 45px; }
+    .zona { padding: 16px; }
 }

@@ -170,7 +170,6 @@ formulario.addEventListener('submit', (e) => {
 
         divCartasComputadora.innerHTML = '';
         divCartasJugador.innerHTML = '';
-        pedirNombreJugador();
     });
 
 })();

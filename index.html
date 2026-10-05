@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Juego de Blackjack contra la computadora" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
             rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-            crossorigin="anonymous"
         />
         <link rel="stylesheet" href="assets/css/styles.css" />
         <title>Blackjack</title>
@@ -16,70 +16,49 @@
 
     <body>
         <header class="titulo">
-            <h1>Blackjack</h1>
+            <h1><span class="palo">♠</span> Blackjack <span class="palo rojo">♥</span></h1>
+            <p>Llega a 21 sin pasarte</p>
         </header>
 
-        <form action="" id="formulario" class="text-center mt-5">
-            <input
-                type="text"
-                name="nombre"
-                id="nombre"
-                placeholder="Ingrese su Nombre"
-            />
-            <input class="btn btn-primary" type="submit" value="Ingresar" />
-        </form>
+        <main class="mesa">
+            <form id="formulario" class="login">
+                <h2>Bienvenido</h2>
+                <label for="nombre">Ingresa tu nombre para comenzar</label>
+                <input
+                    type="text"
+                    name="nombre"
+                    id="nombre"
+                    placeholder="Tu nombre"
+                    autocomplete="off"
+                    required
+                />
+                <button class="btn btn-gold" type="submit">Ingresar</button>
+            </form>
 
-<!--         <div class="container" id="container">
-            <div class="row mt-2">
-                <div class="col text-center">
-                    <button id="btnNuevo" class="btn btn-danger">
-                        Nuevo Juego
-                    </button>
-                    <button id="btnPedir" class="btn btn-primary">
-                        Pedir Carta
-                    </button>
-                    <button id="btnDetener" class="btn btn-primary">
-                        Plantarse
-                    </button>
-                </div>
-            </div> -->
-
-            <div class="row container">
-                <div class="col">
-                    <h2 id="payerName">
-                        <span id="playerName">Player</span> - <small>0</small
-                        ><span> pts.</span>
+            <div id="container" class="juego">
+                <section class="zona">
+                    <h2 class="zona-titulo">
+                        <span id="playerName">Player</span>
+                        <span class="marcador"><small>0</small> pts</span>
                     </h2>
-                    <div id="jugador-cartas">
-                        <!-- <img class="carta" src="assets/cartas/10C.png" alt=""> -->
-                    </div>
-                </div>
-            </div>
+                    <div id="jugador-cartas" class="cartas"></div>
+                </section>
 
-            <div class="row container mt-2">
-                <div class="col">
-                    <h2>Computadora - <small>0</small><span> pts.</span></h2>
-                    <div id="computadora-cartas">
-                        <!-- <img class="carta" src="assets/cartas/3C.png" alt=""> -->
-                    </div>
-                </div>
-            </div>
-        </div>
+                <section class="zona">
+                    <h2 class="zona-titulo">
+                        <span>Computadora</span>
+                        <span class="marcador"><small>0</small> pts</span>
+                    </h2>
+                    <div id="computadora-cartas" class="cartas"></div>
+                </section>
 
-        <div class="container" id="container">
-            <div class="row mt-2">
-                <div class="col text-center">
-                    <button id="btnNuevo" class="btn btn-danger">
-                        Nuevo Juego
-                    </button>
-                    <button id="btnPedir" class="btn btn-primary">
-                        Pedir Carta
-                    </button>
-                    <button id="btnDetener" class="btn btn-primary">
-                        Plantarse
-                    </button>
+                <div class="acciones">
+                    <button id="btnNuevo" class="btn btn-ghost">Nuevo Juego</button>
+                    <button id="btnPedir" class="btn btn-gold">Pedir Carta</button>
+                    <button id="btnDetener" class="btn btn-light">Plantarse</button>
                 </div>
             </div>
+        </main>
 
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="assets/js/underscore-min.js"></script>
